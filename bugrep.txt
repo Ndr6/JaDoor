@@ -1,0 +1,38 @@
+No handlers could be found for logger "nfc.llcp.sec"
+ACS ACR122U on usb:001:007
+Type2Tag 'NXP NTAG213' ID=04AD9132C64E80
+ID: 04AD9132C64E80
+Product: NXP NTAG213
+Identified student card
+Authentified christopher.ufarte@epitech.eu
+Writing time record
+Traceback (most recent call last):
+  File "main.py", line 68, in <module>
+    main()
+  File "main.py", line 65, in main
+    read_tag_loop(clf)
+  File "main.py", line 55, in read_tag_loop
+    'beep-on-connect': False, 'targets': ['106A']})
+  File "/home/ender/GitHub/NFCtest/env/local/lib/python2.7/site-packages/nfc/clf/__init__.py", line 580, in connect
+    result = self._rdwr_connect(rdwr_options, terminate)
+  File "/home/ender/GitHub/NFCtest/env/local/lib/python2.7/site-packages/nfc/clf/__init__.py", line 611, in _rdwr_connect
+    if options['on-connect'](tag):
+  File "main.py", line 47, in on_tag_connect
+    reader.write_time_record(tag)
+  File "/home/ender/GitHub/NFCtest/JaDoor/reader.py", line 25, in write_time_record
+    tag.ndef.records = [timerecord, second_record]
+  File "/home/ender/GitHub/NFCtest/env/local/lib/python2.7/site-packages/nfc/tag/__init__.py", line 209, in records
+    self.octets = b''.join(message_encoder(value))
+  File "/home/ender/GitHub/NFCtest/env/local/lib/python2.7/site-packages/nfc/tag/__init__.py", line 236, in octets
+    self._write_ndef_data(data)
+  File "/home/ender/GitHub/NFCtest/env/local/lib/python2.7/site-packages/nfc/tag/tt2.py", line 256, in _write_ndef_data
+    tag_memory.synchronize()
+  File "/home/ender/GitHub/NFCtest/env/local/lib/python2.7/site-packages/nfc/tag/tt2.py", line 674, in synchronize
+    self._write_to_tag(stop=len(self))
+  File "/home/ender/GitHub/NFCtest/env/local/lib/python2.7/site-packages/nfc/tag/tt2.py", line 668, in _write_to_tag
+    self._tag.write(index >> 2, data)
+  File "/home/ender/GitHub/NFCtest/env/local/lib/python2.7/site-packages/nfc/tag/tt2.py", line 510, in write
+    rsp = self.transceive("\xA2" + chr(page % 256) + data)
+  File "/home/ender/GitHub/NFCtest/env/local/lib/python2.7/site-packages/nfc/tag/tt2.py", line 594, in transceive
+    raise Type2TagCommandError(nfc.tag.TIMEOUT_ERROR)
+nfc.tag.tt2.Type2TagCommandError: unrecoverable timeout error
