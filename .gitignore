@@ -1,3 +1,4 @@
 *.pyc
 env/
 pyvenv.cfg
+lists.db

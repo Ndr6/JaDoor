@@ -1,48 +1,6 @@
 import requests
 
 '''
-login.check_blacklist(id_str)
---
-Returns (boolean) whether the given tag ID is in the blacklist
---
-id_str : Tag unique ID, in a string
-'''
-def check_blacklist(id_str):
-    blacklist = {}
-    if id_str in blacklist:
-        print('Tag in blacklist scanned')
-        return True
-    return False
-
-'''
-login.check_whitelist(id_str)
---
-Returns (boolean) whether the given tag ID is in the whitelist
---
-id_str : Tag unique ID, in a string
-'''
-def check_whitelist(id_str):
-    whitelist = {'049ADB0A853280'}
-    if id_str in whitelist:
-        return True
-    return False
-
-
-'''
-login.check_exit_tags(id_str)
---
-Returns (boolean) whether the given tag ID is in the program exit list
---
-id_str : Tag unique ID, in a string
-'''
-def check_exit_tags(id_str):
-    exit_tags = {'043FE9CA333580'}
-    if id_str in exit_tags:
-        return True
-    return False
-
-
-'''
 login.retrieve(id_str)
 --
 Returns a string containing either the login of the scanned tag, or 'UNKNOWN' if

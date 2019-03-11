@@ -6,6 +6,7 @@ clf = False
 import login
 import door
 import reader
+import db
 
 '''
 on_tag_connect(tag)
@@ -32,18 +33,18 @@ def on_tag_connect(tag):
         time.sleep(5)
         return True
 
-    if login.check_exit_tags(id_str) is True:
+    if db.check_exit_tags(id_str) is True:
         print('Exit tag scanned, closing...')
         clf.close()
         return True
 
-    if login.check_whitelist(id_str) is True:
+    if db.check_whitelist(id_str) is True:
         print('Tag in whitelist authenticated')
         #reader.beep(clf, 2)
         door.open()
         return True
 
-    if login.check_blacklist(id_str) is True:
+    if db.check_blacklist(id_str) is True:
         print('Blacklisted card tried to open')
         #reader.beep(clf, 5)
         return True
