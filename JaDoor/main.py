@@ -7,6 +7,20 @@ import login
 import door
 import reader
 
+'''
+on_tag_connect(tag)
+--
+Checks sequentially for the tag :
+- Tag type : Deny access if not NTAG203/213
+- Exit tags : Exit program if tag ID in exit list
+- Whitelist : Allow access if tag ID in whitelist
+- Blacklist : Deny access if tag ID is blacklist
+- Login : Sends tag ID to cards API, allow access if tag is linked to a login
+
+If tag is a valid student tag, a time record is written on the tag
+--
+tag : NFC tag object, given by the NFC backend
+'''
 def on_tag_connect(tag):
     id_str = reader.get_id(tag)
     print('ID: ' + id_str)
@@ -51,11 +65,23 @@ def on_tag_connect(tag):
     door.open()
     return True
 
+'''
+read_tag_loop(clf)
+--
+Scans for a tag, until the nfc device backend is closed
+--
+clf : NFC backend device
+'''
 def read_tag_loop(clf):
     clf.connect(rdwr={'on-connect': on_tag_connect,
                       'on-release': door.close,
                       'beep-on-connect': False, 'targets': ['106A']})
 
+'''
+main()
+--
+Launches the nfc device backend, then launching the read tag loop
+'''
 def main():
     global clf
     try:

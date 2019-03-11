@@ -2,6 +2,14 @@ import time
 import ndef
 import datetime
 
+'''
+reader.beep(clf, nb)
+--
+Makes the NFC reader blink its led and beep a given number of times
+--
+clf : NFC backend device
+nb : Number of times to blink/beep
+'''
 def beep(clf, nb):
     i = 0
     while i < nb:
@@ -11,10 +19,24 @@ def beep(clf, nb):
         time.sleep(0.1)
         i += 1
 
+'''
+reader.get_id(tag)
+--
+Retrieves the tag ID string from the tag object
+--
+tag : Tag object
+'''
 def get_id(tag):
     return tag.identifier.encode("hex").upper()
 
 
+'''
+write_time_record(tag)
+--
+Writes current time info on the tag
+--
+tag : Tag object
+'''
 def write_time_record(tag):
     if tag.ndef is None:
         return
