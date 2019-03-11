@@ -20,6 +20,6 @@ def write_time_record(tag):
         return
     timerecord = ndef.TextRecord(
         datetime.datetime.now().strftime("JaDoor last opened on %d/%m/%Y - %H:%M:%S"))
-    second_record = ndef.TextRecord('Don\'t forget to make unit tests -- <3 Ndr')
+    second_record = ndef.TextRecord('Don\'t forget to unit test your projects -- <3 Ndr')
     print('Writing time record')
     tag.ndef.records = [timerecord, second_record]
