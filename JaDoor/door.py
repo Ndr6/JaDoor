@@ -6,6 +6,12 @@ import reader
 door = LED("GPIO17")
 opened = False
 
+door.on()
+sleep(3)
+door.off()
+sleep(3)
+door.on()
+
 '''
 door.open()
 --
