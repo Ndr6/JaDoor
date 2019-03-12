@@ -4,7 +4,7 @@ import time
 import reader
 
 from time import sleep
-door = OutputDevice("GPIO17", active_high=False, initial_value=False)
+door = OutputDevice("GPIO4", active_high=False, initial_value=False)
 opened = False
 
 door.on()
