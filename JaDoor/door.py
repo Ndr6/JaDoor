@@ -1,6 +1,9 @@
+from gpiozero import DigitalOutputDevice
+
 import time
 import reader
 
+door = DigitalOutputDevice("GPIO17", initial_value=False)
 opened = False
 
 '''
@@ -12,6 +15,7 @@ Opens the door (or will open it, one day, prints 'door opened' for now)
 def open():
     global opened
     opened = True
+    door.on()
     print('Door unlocked')
 
 '''
@@ -25,5 +29,6 @@ def close(tag):
     global opened
     if opened is True:
         time.sleep(3)
+        door.off()
         print('Door locked')
         opened = False
