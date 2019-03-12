@@ -14,7 +14,7 @@ def retrieve(id_str):
     if req.status_code == 200 and 'login' in req.json():
         print('Identified student card')
         login = req.json()['login']
-        login = re.sub(r'.+(?=@.+\.(.+))', "xxxx", login)
+        #login = re.sub(r'.+(?=@.+\.(.+))', "xxxx", login)
         return login
     else:
         print('Invalid response from cards API.')
