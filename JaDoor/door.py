@@ -1,10 +1,10 @@
-from gpiozero import LED
+from gpiozero import OutputDevice
 
 import time
 import reader
 
 from time import sleep
-door = LED(2)
+door = OutputDevice("GPIO17", active_high=False, initial_value=False)
 opened = False
 
 door.on()
