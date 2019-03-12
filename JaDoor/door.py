@@ -1,9 +1,9 @@
-from gpiozero import DigitalOutputDevice
+from gpiozero import LED
 
 import time
 import reader
 
-door = DigitalOutputDevice(11 , initial_value=False)
+door = LED(11)
 opened = False
 
 '''
@@ -14,7 +14,6 @@ Opens the door (or will open it, one day, prints 'door opened' for now)
 '''
 def open():
     global opened
-    global door
     opened = True
     door.on()
     print('Door unlocked')
@@ -28,7 +27,6 @@ tag argument is unused and given by nfcpy
 '''
 def close(tag):
     global opened
-    global door
     if opened is True:
         time.sleep(3)
         door.off()
