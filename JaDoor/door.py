@@ -3,6 +3,7 @@ from gpiozero import LED
 import time
 import reader
 
+from time import sleep
 door = LED("GPIO17")
 opened = False
 
