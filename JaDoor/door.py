@@ -4,7 +4,7 @@ import time
 import reader
 
 from time import sleep
-door = LED("GPIO17")
+door = LED(2)
 opened = False
 
 door.on()
