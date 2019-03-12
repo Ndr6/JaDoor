@@ -12,7 +12,9 @@ def retrieve(id_str):
     req = requests.get('https://whatsupdoc.epitech.eu/card/' + id_str)
     if req.status_code == 200 and 'login' in req.json():
         print('Identified student card')
-        return req.json()['login']
+        login = req.json()['login']
+        login = re.sub(r'.+(?=@.+\.(.+))', "xxxx", login)
+        return login
     else:
         print('Invalid response from cards API.')
         return 'UNKNOWN'
