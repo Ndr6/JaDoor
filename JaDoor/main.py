@@ -40,8 +40,8 @@ def on_tag_connect(tag):
 
     if db.check_whitelist(id_str) is True:
         print('Tag in whitelist authenticated')
-        reader.beep(clf, 2)
         door.open()
+        reader.beep(clf, 2)
         return True
 
     if db.check_blacklist(id_str) is True:
