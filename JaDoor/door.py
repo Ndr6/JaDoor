@@ -3,7 +3,7 @@ from gpiozero import DigitalOutputDevice
 import time
 import reader
 
-door = DigitalOutputDevice("GPIO17", initial_value=True)
+door = DigitalOutputDevice(11 , initial_value=False)
 opened = False
 
 '''
