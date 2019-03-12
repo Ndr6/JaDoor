@@ -16,7 +16,7 @@ Opens the door (or will open it, one day, prints 'door opened' for now)
 def open():
     global opened
     opened = True
-    relay.off()
+    relay.on()
     print('Door unlocked')
 
 '''
@@ -30,6 +30,6 @@ def close(tag):
     global opened
     if opened is True:
         time.sleep(3)
-        relay.on()
+        relay.off()
         print('Door locked')
         opened = False
