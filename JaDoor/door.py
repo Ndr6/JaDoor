@@ -4,14 +4,8 @@ import time
 import reader
 
 from time import sleep
-door = OutputDevice("GPIO4", active_high=False, initial_value=False)
+relay = OutputDevice(18, active_high=False, initial_value=False)
 opened = False
-
-door.on()
-sleep(3)
-door.off()
-sleep(3)
-door.on()
 
 '''
 door.open()
@@ -22,7 +16,7 @@ Opens the door (or will open it, one day, prints 'door opened' for now)
 def open():
     global opened
     opened = True
-    door.on()
+    relay.on()
     print('Door unlocked')
 
 '''
@@ -36,6 +30,6 @@ def close(tag):
     global opened
     if opened is True:
         time.sleep(3)
-        door.off()
+        relay.off()
         print('Door locked')
         opened = False
