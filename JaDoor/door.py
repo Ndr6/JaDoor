@@ -3,7 +3,7 @@ from gpiozero import LED
 import time
 import reader
 
-door = LED("GPIO2")
+door = LED("GPIO17")
 opened = False
 
 '''
