@@ -29,7 +29,7 @@ def on_tag_connect(tag):
 
     if tag.product not in {'NXP NTAG203', 'NXP NTAG213'}:
         print('Invalid tag type')
-        #reader.beep(clf, 3)
+        reader.beep(clf, 3)
         time.sleep(5)
         return True
 
@@ -40,19 +40,19 @@ def on_tag_connect(tag):
 
     if db.check_whitelist(id_str) is True:
         print('Tag in whitelist authenticated')
-        #reader.beep(clf, 2)
+        reader.beep(clf, 2)
         door.open()
         return True
 
     if db.check_blacklist(id_str) is True:
         print('Blacklisted card tried to open')
-        #reader.beep(clf, 5)
+        reader.beep(clf, 5)
         return True
 
     login_str = login.retrieve(id_str)
     if login_str == 'UNKNOWN':
         print('Unknown card scanned')
-        #reader.beep(clf, 3)
+        reader.beep(clf, 3)
         return True
     print('Authentified ' + login_str)
 
@@ -60,9 +60,9 @@ def on_tag_connect(tag):
         reader.write_time_record(tag)
     except nfc.tag.tt2.Type2TagCommandError:
         print('Error when writing tag')
-        #reader.beep(clf, 1)
+        reader.beep(clf, 1)
         time.sleep(1)
-    #reader.beep(clf, 1)
+    reader.beep(clf, 1)
     door.open()
     return True
 
